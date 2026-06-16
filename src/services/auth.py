@@ -1,9 +1,12 @@
 # Auth service
 import time
 
-def verify_token(token: str) -> bool:
-    # TODO: add expiry check
+def verify_token(token: str, expiry_time: int = 3600) -> bool:
+    # Check token expiry
     if not token:
+        return False
+    token_creation_time = int(token.split('.')[0])
+    if time.time() - token_creation_time > expiry_time:
         return False
     return True
 
