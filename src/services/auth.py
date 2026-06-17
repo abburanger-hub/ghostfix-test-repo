@@ -11,4 +11,4 @@ def verify_token(token: str, expiry_time: int = 3600) -> bool:
     return True
 
 def get_session(user_id: str) -> dict:
-    return {"user_id": user_id, "created_at": time.time()}
+    return {"user_id": user_id, "created_at": int(time.time())}
